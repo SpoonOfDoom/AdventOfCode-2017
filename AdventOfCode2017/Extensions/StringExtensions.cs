@@ -9,8 +9,7 @@ namespace AdventOfCode2017.Extensions
     {
         public static bool IsNumeric(this string s)
         {
-            long a;
-            return long.TryParse(s, out a);
+            return long.TryParse(s, out _);
         }
 
         public static int ToInt(this string s)
@@ -25,18 +24,18 @@ namespace AdventOfCode2017.Extensions
 
         public static string Md5Hash(this string s, MD5CryptoServiceProvider md5 = null)
         {
-	        if (md5 == null)
-	        {
-		        md5 = new MD5CryptoServiceProvider();
-	        }
-	        var bytes = s.Select(Convert.ToByte).ToArray();
-	        var hashedBytes = md5.ComputeHash(bytes);
-			StringBuilder sb = new StringBuilder();
+            if (md5 == null)
+            {
+                md5 = new MD5CryptoServiceProvider();
+            }
+            byte[] bytes = s.Select(Convert.ToByte).ToArray();
+            byte[] hashedBytes = md5.ComputeHash(bytes);
+            var sb = new StringBuilder();
 
-	        foreach (byte b in hashedBytes)
-	        {
-		        sb.Append(b.ToString("x2"));
-	        }
+            foreach (byte b in hashedBytes)
+            {
+                sb.Append(b.ToString("x2"));
+            }
             return sb.ToString();
         }
     }
