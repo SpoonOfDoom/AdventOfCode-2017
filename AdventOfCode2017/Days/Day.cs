@@ -61,8 +61,8 @@ namespace AdventOfCode2017.Days
         /// <returns></returns>
         private void GetInput()
         {
-            Input = File.ReadAllText("input\\day" + number + ".txt");
-            InputLines = File.ReadAllLines("input\\day" + number + ".txt").ToList();
+            Input = File.ReadAllText("input\\day" + number.ToString("00") + ".txt");
+            InputLines = File.ReadAllLines("input\\day" + number.ToString("00") + ".txt").ToList();
         }
 
         protected virtual object GetSolutionPart1()
@@ -125,14 +125,14 @@ namespace AdventOfCode2017.Days
             {
                 Directory.CreateDirectory(TimeExportFolder);
             }
-            string filename = "day_" + number + ".log";
+            string filename = "day_" + number.ToString("00") + ".log";
 
             string filePath = TimeExportFolder + "\\" + filename;
 
             string solution = part == 1 ? SolutionPart1.ToString() : SolutionPart2.ToString();
             TimeSpan solutionTime = part == 1 ? solutionTime1 : solutionTime2;
 
-            string fileContent = $"{Environment.MachineName}|{Configuration}\\Day {number} - Part {part}: {solution} (solved in {solutionTime.TotalSeconds} seconds / {solutionTime}, saved at {DateTime.Now:yyyy-MM-dd_HH-mm-ss})\n";
+            string fileContent = $"{Environment.MachineName}|{Configuration}\\Day {number.ToString("00")} - Part {part}: {solution} (solved in {solutionTime.TotalSeconds} seconds / {solutionTime}, saved at {DateTime.Now:yyyy-MM-dd_HH-mm-ss})\n";
 
             if (append)
             {
@@ -150,10 +150,10 @@ namespace AdventOfCode2017.Days
         {
             if (dayInstance == null)
             {
-                Type dayType = Type.GetType("AdventOfCode2017.Days.Day" + number);
+                Type dayType = Type.GetType("AdventOfCode2017.Days.Day" + number.ToString("00"));
                 if (dayType == null)
                 {
-                    throw new Exception("Couldn't find type AdventOfCode2017.Days.Day" + number);
+                    throw new Exception("Couldn't find type AdventOfCode2017.Days.Day" + number.ToString("00"));
                 }
                 dayInstance = (Day)Activator.CreateInstance(dayType);
             }
@@ -176,7 +176,7 @@ namespace AdventOfCode2017.Days
                 //dayInstance.WriteToFile();
                 if (verbose)
                 {
-                    Console.WriteLine($"day {dayInstance.number} part 1 : {dayInstance.SolutionPart1} - solved in {dayInstance.solutionTime1.TotalSeconds} seconds ({dayInstance.solutionTime1.TotalMilliseconds} milliseconds)");
+                    Console.WriteLine($"day {dayInstance.number.ToString("00")} part 1 : {dayInstance.SolutionPart1} - solved in {dayInstance.solutionTime1.TotalSeconds} seconds ({dayInstance.solutionTime1.TotalMilliseconds} milliseconds)");
                 }
                 try
                 {
@@ -200,7 +200,7 @@ namespace AdventOfCode2017.Days
 
                 if (verbose)
                 {
-                    Console.WriteLine($"day {dayInstance.number} part 2 : {dayInstance.SolutionPart2} - solved in {dayInstance.solutionTime2.TotalSeconds} seconds ({dayInstance.solutionTime2.TotalMilliseconds} milliseconds)");
+                    Console.WriteLine($"day {dayInstance.number.ToString("00")} part 2 : {dayInstance.SolutionPart2} - solved in {dayInstance.solutionTime2.TotalSeconds} seconds ({dayInstance.solutionTime2.TotalMilliseconds} milliseconds)");
                     Console.WriteLine($"total time: {dayInstance.TotalTime.TotalSeconds} seconds ({dayInstance.TotalTime.TotalMilliseconds} milliseconds)");
                 }
 

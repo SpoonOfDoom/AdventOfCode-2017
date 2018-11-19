@@ -6,9 +6,9 @@ using AdventOfCode2017.Extensions;
 namespace AdventOfCode2017.Days
 {
     // ReSharper disable once UnusedMember.Global
-    class Day1 : Day
+    class Day01 : Day
 	{
-		public Day1() : base(1) {}
+		public Day01() : base(1) {}
 
 	    private int GetDigitSum(List<int> digits, bool part2Mode = false)
 	    {

@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AdventOfCode2017.Extensions;
 
 namespace AdventOfCode2017.Days
 {
     // ReSharper disable once UnusedMember.Global
-    class Day4 : Day
+    class Day04 : Day
 	{
-		public Day4() : base(4) {}
+		public Day04() : base(4) {}
 
 	    private bool IsPassPhraseValid(string phrase, bool part2Mode = false)
 	    {
