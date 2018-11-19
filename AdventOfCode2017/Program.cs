@@ -6,7 +6,7 @@ namespace AdventOfCode2017
 	{
 	    static void Main()
 	    {
-	        Day.RunDay(05);
+	        Day.RunDay(06);
 	    }
 	}
 }
